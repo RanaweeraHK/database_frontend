@@ -10,9 +10,14 @@ import offer5 from '../assets/images/service5.jpg';
 import offer6 from '../assets/images/service6.jpg';
 
 function Card_service({ imgSrc, title, text, buttonClass }) {
+  const imgStyle = {
+    width: '100%', 
+    height: 'auto',
+  };
+
   return (
     <section className={`card ${buttonClass}`}>
-      <img className="img" src={imgSrc} alt={`${title} Img`} />
+      <img className="img" src={imgSrc} alt={`${title} Img`} style={imgStyle} />
       <h1 className="cardTitle">{title}</h1>
       <span className="cardText">{text}</span>
     </section>

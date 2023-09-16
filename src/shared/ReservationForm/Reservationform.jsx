@@ -7,10 +7,7 @@ const ReservationForm = () => {
     <div className="reservation-form-container">
       <Container>
         <Row className="justify-content-center align-items-center form-row">
-          <Col lg="12">
-            {/* Departure Section */}
             <Row>
-              <Col lg="6">
                 <form className="reservation-form">
                   <h3>Departure</h3>
                   <div className="form-group">
@@ -30,12 +27,10 @@ const ReservationForm = () => {
                     <input type="time" id="departure-time" name="departure-time" className="form-control" />
                   </div>
                 </form>
-              </Col>
             </Row>
 
             {/* Arrival Section */}
             <Row>
-              <Col lg="6">
                 <form className="reservation-form">
                   <h3>Arrival</h3>
                   <div className="form-group">
@@ -55,7 +50,6 @@ const ReservationForm = () => {
                     <input type="time" id="arrival-time" name="arrival-time" className="form-control" />
                   </div>
                 </form>
-              </Col>
             </Row>
 
             {/* Check Button */}
@@ -64,7 +58,6 @@ const ReservationForm = () => {
                 <button type="button" className="btn-primary">CHECK</button>
               </Col>
             </Row>
-          </Col>
         </Row>
       </Container>
     </div>

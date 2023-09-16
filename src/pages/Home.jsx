@@ -1,14 +1,10 @@
-
 import React from 'react';
-import '../styles/home.css';
 import { Container, Row, Col } from 'reactstrap';
 import heroImg01 from '../assets/images/main.png';
 import ServiceList from '../services/ServiceList';
 import ImagesGallery from '../components/Image-gallery/ImagesGallery';
 import Newsletter from '../shared/Newsletter';
-import ReservationForm from '../shared/ReservationForm/Reservationform'; // Correct the import
-
-
+import ReservationForm from '../shared/ReservationForm/Reservationform';
 
 const Home = () => {
   return (
@@ -18,26 +14,23 @@ const Home = () => {
           <Row>
             <Col lg="6">
               <div className="hero__img-box">
-                <img className="top" src={heroImg01} alt="" />
+                <img className="top img-fluid" src={heroImg01} alt="" />
               </div>
             </Col>
             <Col lg="6">
-              <div>
-                <div className="hero__content">
-                  <div className="hero__subtitle d-flex align-items-center">
-                    <div className="sub">Discover Seamless Travel</div>
-                  </div>
-
-                  <h1>
-                    Time to <span className="highlight">travel</span> with us
-                  </h1>
-                  <p>
-                    Welcome to B airline Reservations. Fly with us today and unlock the B airline Experience!"
-                  </p>
+              <div className="hero__content">
+                <div className="hero__subtitle d-flex align-items-center">
+                  <div className="sub">Discover Seamless Travel</div>
                 </div>
+
+                <h1>
+                  Time to <span className="highlight">travel</span> with us
+                </h1>
+                <p>
+                  Welcome to B airline Reservations. Fly with us today and unlock the B airline Experience!
+                </p>
               </div>
             </Col>
-            
           </Row>
         </Container>
       </section>
@@ -50,14 +43,7 @@ const Home = () => {
               <h2 className="services__title">We offer our best services</h2>
             </Col>
             <ServiceList />
-          </Row>
-        </Container>
-      </section>
 
-  
-      <section className="reservation-section">
-        <Container>
-          <Row>
             <Col lg="12">
               <div className="head">Book a trip</div>
             </Col>
@@ -65,13 +51,13 @@ const Home = () => {
         </Container>
       </section>
 
-      <ReservationForm /> 
+      <ReservationForm />
 
       <section>
         <Container>
           <Row>
             <Col lg="12">
-              <h2 className="gallery__title"> Popular Routes </h2>
+              <h2 className="gallery__title">Popular Routes</h2>
             </Col>
             <Col lg="12">
               <ImagesGallery />

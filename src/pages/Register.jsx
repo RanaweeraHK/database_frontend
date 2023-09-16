@@ -22,6 +22,7 @@ const Register = () => {
   };
 
   return (
+    <section>
     <Container>
       <Row>
         <Col lg="8" className="m-auto">
@@ -29,7 +30,7 @@ const Register = () => {
             className="reg__container d-flex justify-content-between"
             style={{ backgroundImage: `url(${registerImg})` }}
           >
-            <div className="reg__form">
+            <div className="login__form">
               <h2>Register</h2>
               <Form onSubmit={handleClick}>
                 <FormGroup>
@@ -37,7 +38,7 @@ const Register = () => {
                     type="text"
                     placeholder="Username"
                     required
-                    id="box"
+                    id="box-log"
                     onChange={handleChange}
                     style={{ '::placeholder': { color: 'black' } }}
                   />
@@ -47,7 +48,7 @@ const Register = () => {
                     type="email"
                     placeholder="Email"
                     required
-                    id="box"
+                    id="box-log"
                     onChange={handleChange}
                   />
                 </FormGroup>
@@ -56,7 +57,7 @@ const Register = () => {
                     type="password"
                     placeholder="Password"
                     required
-                    id="box"
+                    id="box-log"
                     onChange={handleChange}
                   />
                 </FormGroup>
@@ -76,6 +77,7 @@ const Register = () => {
         </Col>
       </Row>
     </Container>
+    </section>
   );
 };
 

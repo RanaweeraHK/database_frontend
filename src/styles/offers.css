@@ -1,105 +1,115 @@
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Sketch&family=Heebo&family=Inter&family=Julee&display=swap');
 
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
-    font-size: 15px;
+    font-size: 1vw;
 }
 
+.head{
+    margin-top: 10%;
+    font-size: 1.4rem;
+}
 
 .flexContainer {
-    margin-top: 30px;
+    margin-top: 2.14vh;
     display: flex;
     flex-wrap: wrap;
-    height: 1400px;
-    justify-content: center;  
+    height: 49vh;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    
 }
 
 .card {
     display: flex;
     flex-direction: column;
-    width: 320px;
+    width: 25vw;
     height: auto;
-    padding: 36px;
+    padding: 2.56vw;
     cursor: pointer;
-  }
+}
+
 .card:hover {
     scale: 1.02;
 }
+
 .cardTitle {
+    margin-top: 10%;
     font-family: 'Big Shoulders Display';
-    font-size: 25px;
+    font-size: 1rem;
     color: black;
     font-weight: 800;
     text-align: center;
 }
+
 .cardText {
     font-family: 'Heebo';
-    color:black;
+    color: black;
     text-align: center;
-
+    font-size: 1rem;
 }
-
 
 .img {
-    width: 100%px;
-    height: 200px;
+    width: 100%;
+    height: 40vh;
 }
 
-
-.attribution { 
-    font-size: 11px; 
+.attribution {
+    font-size: 0.733vw;
     text-align: center;
 }
-.attribution a { 
-    color: hsl(228, 45%, 44%); 
+
+.attribution a {
+    color: hsl(228, 45%, 44%);
 }
 
-
-.button:hover{
+.button:hover {
     cursor: pointer;
     background-color: rgba(255, 255, 255, 0);
-    border: 1px solid #fff;
-    color:black;
+    border: 0.67vw solid #fff;
+    color: black;
 }
+
 .buttonLink:hover {
     color: #fff;
-    
 }
 
 @media screen and (max-width: 780px) {
+    
     .flexContainer {
-        gap: 15px
+        gap: 1.33vw;
     }
-    .card.suvs, .card.luxury, .card.sedans {
-        border-radius: 10px;
+
+    .card.suvs,
+    .card.luxury,
+    .card.sedans {
+        border-radius: 0.67vw;
     }
+
     .attribution {
-        margin-top: 400px;
+        margin-top: 26.67vh;
+    }
+    .head{
+        margin-top: 30%;
     }
 }
 
-@media screen and (max-width: 534px) {
-    .attribution {
-        margin-top: 850px;
-    }
-}
+
 
 .gridContainer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    width: 400px;
-    gap: 20px; 
-    margin-left: 75px;
-    margin-bottom: 50px;
-  }
+    width: 80vw;
+    gap: 2vw;
+    margin-left: 10vw;
+    margin-bottom: 13.33vh;
+}
+
   
   
   

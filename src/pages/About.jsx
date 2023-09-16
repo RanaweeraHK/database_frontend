@@ -11,18 +11,25 @@ import profile3 from '../assets/images/profile3.jpg';
 import profile4 from '../assets/images/profile4.jpg';
 import profile5 from '../assets/images/profile5.jpg';
 
-function Card_about1({ title, text, cardColor }) {
+function Card_about1({ title, text, cardColor, titleFontSize }) {
   const cardStyle = {
     backgroundColor: cardColor,
   };
 
+  const titleStyle = {
+    fontSize: titleFontSize || '1.5rem', 
+  };
+
   return (
     <section className="card" style={cardStyle}>
-      <h1 className="cardTitle">{title}</h1>
+      <h1 className="cardTitle" style={titleStyle}>
+        {title}
+      </h1>
       <span className="cardText">{text}</span>
     </section>
   );
 }
+
 
 function About() {
   const mainStyle = {
@@ -39,6 +46,7 @@ function About() {
         <Card_about1
           title="Vision"
           text="To be the world's preferred airline, known for our commitment to safety, exceptional service, and continuous innovation, making air travel accessible and enjoyable for people around the globe."
+          
         />
         <Card_about1
           title="Mission"

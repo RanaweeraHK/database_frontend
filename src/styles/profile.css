@@ -1,30 +1,30 @@
 
 .profileCard {
   border: 1px solid #ccc;
-  padding: 16px;
+  padding: 5vh;
   text-align: center;
-  width: 200px; 
-  margin: 10px; 
+  width: 100%; 
+  margin:10%; 
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
 .profileImage {
-  width: 100px;
-  height: 100px;
+  width: 70%;
+  height: 50%;
   border-radius: 50%;
   margin-bottom: 10px;
 }
 
 
 .profileName {
-  font-size: 18px;
+  font-size: 1rem;
   font-weight: bold;
 }
 
 
 .profileRole {
-  font-size: 14px;
+  font-size: 0.8rem;
   color: #888;
 }
