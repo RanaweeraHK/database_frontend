@@ -111,12 +111,12 @@ const Header = () => {
                   {isSmallScreen && isNavVisible && (
                     <div className="nav__btns d-flex align-items-center gap-4">
                       <Button className="btn primary__btn">
-                        <NavLink to="/login" onClick={closeMobileMenu}>
+                        <NavLink to="/login" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
                           Login
                         </NavLink>
                       </Button>
                       <Button className="btn primary__btn">
-                        <NavLink to="/register" onClick={closeMobileMenu}>
+                        <NavLink to="/register" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
                           Register
                         </NavLink>
                       </Button>
@@ -134,12 +134,12 @@ const Header = () => {
                 {!isSmallScreen && (
                   <div className="nav__btns d-flex align-items-center gap-4">
                     <Button className="btn primary__btn">
-                      <NavLink to="/login" onClick={closeMobileMenu}>
+                      <NavLink to="/login" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
                         Login
                       </NavLink>
                     </Button>
                     <Button className="btn primary__btn">
-                      <NavLink to="/register" onClick={closeMobileMenu}>
+                      <NavLink to="/register" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
                         Register
                       </NavLink>
                     </Button>
