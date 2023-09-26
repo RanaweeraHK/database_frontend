@@ -27,10 +27,7 @@ const quick__links=[
    },
 
 
-   {
-    path:'/office',
-    display:'Contact'
-   },
+   
 ]
 
 const quick__links2=[
