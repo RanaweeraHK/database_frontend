@@ -53,6 +53,9 @@ const quick__links2=[
 const Footer = () => {
 
 const year = new Date().getFullYear()
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
 
 
   return (
@@ -79,24 +82,24 @@ const year = new Date().getFullYear()
           </Col>
 
 
-          <Col lg='3'>
-            <h5 className ="footer__link-title">Discover</h5>
+          <Col lg="3">
+            <h5 className="footer__link-title">Discover</h5>
             <ListGroup className="footer__quick-links">
-              {quick__links.map((item,index)=>(
+              {quick__links.map((item, index) => (
                 <ListGroupItem key={index} className="ps-0 border-0">
-                  <Link to={item.path}>{item.display}</Link>
+                  <Link to={item.path} onClick={scrollToTop}>{item.display}</Link>
                 </ListGroupItem>
               ))}
             </ListGroup>
           </Col>
 
 
-          <Col lg='3'>
-            <h5 className ="footer__link-title">Quick Links</h5>
+          <Col lg="3">
+            <h5 className="footer__link-title">Quick Links</h5>
             <ListGroup className="footer__quick-links">
-              {quick__links2.map((item,index)=>(
+              {quick__links2.map((item, index) => (
                 <ListGroupItem key={index} className="ps-0 border-0">
-                  <Link to={item.path}>{item.display}</Link>
+                  <Link to={item.path} onClick={scrollToTop}>{item.display}</Link>
                 </ListGroupItem>
               ))}
             </ListGroup>
