@@ -120,6 +120,11 @@ const Header = () => {
                           Register
                         </NavLink>
                       </Button>
+                      <Button className="btn primary__btn">
+                        <NavLink to="/guest" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
+                          Register
+                        </NavLink>
+                      </Button>
                     </div>
                   )}
                 </div>

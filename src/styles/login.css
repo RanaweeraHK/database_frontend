@@ -42,17 +42,13 @@
   outline: none;
 }
 
-.auth__btn {
-  background: var(--heading-color) !important;
-  width: 100%;
-  color: #fff !important;
-}
 
 .login__form p {
   font-size: 1rem;
-  color: #fff;
+  color: black;
   margin-top: 1vw;
   text-align: center;
+  font-weight: 500;
 }
 
 .login__form p a {
@@ -96,7 +92,14 @@
   font-size: 1rem;
 }
 
-
+.btn_secondary1{
+  margin-left: 6vw;
+  background-color: #5c4033 !important;
+  width:50%;
+  color: white !important;
+  border-radius: 20px !important;
+  font-size: 1rem;
+}
 @media screen and (max-width: 50%) {
   
   

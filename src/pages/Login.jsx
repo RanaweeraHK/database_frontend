@@ -3,44 +3,21 @@ import '../styles/login.css'
 import{Container,Row,Col,Form,FormGroup,Button} from 'reactstrap'
 import {Link, useNavigate} from 'react-router-dom'
 import loginImg from '../assets/images/plane-login.webp'
-import {FcGoogle} from 'react-icons/fc'
-import {app} from '../config/firebase-config'
-import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
+// import {FcGoogle} from 'react-icons/fc'
+// import {app} from '../config/firebase-config'
+// import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
 
 // const [auth, setAuth]= useState(false||window.localStorage.getItem("auth")==="true")
 const Login = ({setAuth}) => 
 {
 
-  const firebaseAuth = getAuth(app);
-  const provider = new GoogleAuthProvider();
+  // const firebaseAuth = getAuth(app);
+  // const provider = new GoogleAuthProvider();
 
   const navigate = useNavigate();
 
 
-  const loginWithGoogle = async () => {
-     await signInWithPopup(firebaseAuth, provider).then((userCred) =>{
-      if(userCred){
-        setAuth="true";
-        window.localStorage.setItem("auth","true");
-        firebaseAuth.onAuthStateChanged((userCred)=>{
-          if(userCred){
-            userCred.getIdToken().then((token)=>{
-                console.log(token);
-            })
-            navigate("/home",{replace:true})
-        }else{
-            setAuth="false";
-            navigate("/login");
-          }
-        })
-      }
-     })
-  }
-//useEffect(()=>{
-  //if(window.localStorage.getItem("auth")){
-    //navigate("/home",{replace:true})
- // }
-//},[])
+  
   const [credentials, setCredentials] = useState({
     email:undefined,
     password:undefined
@@ -68,7 +45,7 @@ const Login = ({setAuth}) =>
 
               <div className="login__form">
                 <h2 className='head_login'>Login</h2>
-                <Form onSubmit={handleClick}>
+                {/* <Form onSubmit={handleClick}> */}
                   <FormGroup>
                     <input type="email" placeholder="Email" required id="box-log" onChange={handleChange}/>
                   </FormGroup>
@@ -76,20 +53,22 @@ const Login = ({setAuth}) =>
                     <input type="password" placeholder="Password" required id="box-log" onChange={handleChange}/>
                   </FormGroup>
                   
-                  <Button className='btn secondary__btn auth__btn' type="submit">
+                  <Button className="btn_secondary1"  onClick={handleClick}>
                     Login
                   </Button>
-                  <Button className='btn google__btn auth__btn ' type="submit" onClick={loginWithGoogle}>
+                  {/* <Button className='btn google__btn auth__btn ' type="submit" onClick={loginWithGoogle}>
                   <FcGoogle/>
                     Sign in with Google
                     </Button>
-                    
-                </Form>
-                <p>Don't have an account?<Link to='/register'>Create </Link></p>
+                     */}
+                {/* </Form> */}
+                <p >Don't have an account?<Link to='/register' >Create </Link></p>
               </div>
  
             </div>
+            
           </Col>
+          
         </Row>
       </Container>
 

@@ -1,8 +1,17 @@
 import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import './ReservationForm.css';
 
+
 const ReservationForm = () => {
+  const navigate = useNavigate(); 
+
+  const handleCheckButtonClick = () => {
+    navigate('/availability');
+    window.scrollTo(0, 0); 
+  };
+  
   return (
     <div className="reservation-form-container">
       <Container>
@@ -54,9 +63,11 @@ const ReservationForm = () => {
 
             {/* Check Button */}
             <Row>
-              <Col lg="12" className="text-right">
-                <button type="button" className="btn-primary">CHECK</button>
-              </Col>
+            <Col lg="12" className="text-right">
+            <button className="btn-primary" onClick={handleCheckButtonClick}>
+                Check
+              </button>
+            </Col>
             </Row>
         </Row>
       </Container>

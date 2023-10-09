@@ -1,4 +1,4 @@
-/* Your other CSS styles */
+
 div.reservation-form-container form.reservation-form {
   width: 50%; 
 }
@@ -43,12 +43,12 @@ label {
 }
 
 .btn-primary {
-  background-color: cornsilk;
+  background-color: #1d9f8e;
   color: black;
   border: none;
   border-radius: 1.25vw;
   cursor: pointer;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   margin: auto;
   margin-top: 2%;
   margin-bottom: 2%;
@@ -58,7 +58,8 @@ label {
 
 .btn-primary:hover {
   transform: scale(1.1);
-  background-color: aliceblue;
+  background-color: darkgray;
+  color: black;
 }
 
 .reservation-form {
