@@ -116,12 +116,7 @@ const Header = () => {
                         </NavLink>
                       </Button>
                       <Button className="btn primary__btn">
-                        <NavLink to="/register" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
-                          Register
-                        </NavLink>
-                      </Button>
-                      <Button className="btn primary__btn">
-                        <NavLink to="/guest" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
+                        <NavLink to="/registered_user" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
                           Register
                         </NavLink>
                       </Button>
@@ -144,7 +139,7 @@ const Header = () => {
                       </NavLink>
                     </Button>
                     <Button className="btn primary__btn">
-                      <NavLink to="/register" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
+                      <NavLink to="/registered_user" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
                         Register
                       </NavLink>
                     </Button>

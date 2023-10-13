@@ -24,7 +24,7 @@ const Login = ({setAuth}) =>
   });
 
   const handleChange = e =>{
-    setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value}))
+    setCredentials(prev => ({ ...prev, [e.target.name]: e.target.value}))
   }
 
 
@@ -47,10 +47,10 @@ const Login = ({setAuth}) =>
                 <h2 className='head_login'>Login</h2>
                 {/* <Form onSubmit={handleClick}> */}
                   <FormGroup>
-                    <input type="email" placeholder="Email" required id="box-log" onChange={handleChange}/>
+                    <input type="email" placeholder="Email" required id="box-log" name="email" onChange={handleChange}/>
                   </FormGroup>
                   <FormGroup>
-                    <input type="password" placeholder="Password" required id="box-log" onChange={handleChange}/>
+                    <input type="password" placeholder="Password" required id="box-log" name = "password" onChange={handleChange}/>
                   </FormGroup>
                   
                   <Button className="btn_secondary1"  onClick={handleClick}>

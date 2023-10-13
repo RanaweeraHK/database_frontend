@@ -1,24 +1,55 @@
 import React, { useState } from 'react';
 import '../styles/login.css';
 import { Container, Row, Col, Form, FormGroup, Button } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import registerImg from '../assets/images/plane_Register.jpg';
 import { FcGoogle } from 'react-icons/fc';
 import '../styles/register.css';
+import axios from 'axios';
 
 const Register = () => {
+
+  const navigate = useNavigate();
+
   const [credentials, setCredentials] = useState({
-    userName: undefined,
-    email: undefined,
-    password: undefined,
+    userName: '',
+    email: '',
+    password: '',
   });
 
   const handleChange = (e) => {
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+    setCredentials((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleClick = (e) => {
     e.preventDefault();
+  };
+
+  const navigateToLogin = () => {
+    // navigate to /login
+    navigate('/login');
+  };
+
+  const handleRegistration = () => {
+    const userData = {
+      email: credentials.email,
+      password: credentials.password,
+    };
+
+    // Send a POST request to your Flask backend
+    axios.post('http://127.0.0.1:5000/signup', userData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        navigateToLogin();
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Handle errors from the backend (e.g., display an error message)
+        console.error(error);
+      });
   };
 
   return (
@@ -47,6 +78,7 @@ const Register = () => {
                   <input
                     type="email"
                     placeholder="Email"
+                    name='email'
                     required
                     id="box-log"
                     onChange={handleChange}
@@ -56,12 +88,13 @@ const Register = () => {
                   <input
                     type="password"
                     placeholder="Password"
+                    name='password'
                     required
                     id="box-log"
                     onChange={handleChange}
                   />
                 </FormGroup>
-                <Button className="btn secondary__btn auth__btn" type="submit">
+                <Button className="btn secondary__btn auth__btn" type="submit" onClick={handleRegistration}>
                   Create Account
                 </Button>
                 <Button className="btn google__btn auth__btn " type="submit">

@@ -1,24 +1,25 @@
-
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../styles/registered_user.css';
 import { useNavigate } from 'react-router-dom';
+
 
 const Registered_user = () => {
 
     const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    gender: '',
-    addressLine1: '',
-    addressLine2: '',
-    country: '',
-    city: '',
+    email : '',
+    password : '',
+    firstName : '',
+    lastName :  '',
+    gender : '',
+    addressLine1 : '',
+    addressLine2 : '',
+    country : '',
+    city : '',
+    birthday : '',
+    passportNumber : ''
   });
 
   const [countries, setCountries] = useState([]);
@@ -35,13 +36,16 @@ const Registered_user = () => {
       });
   }, []); 
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
+  // const handleChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   });
 
+    const handleChange = (e) => {
+      const { name, value } = e.target;
+      setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     
     if (name === 'country') {
       axios.get(`YOUR_CITY_API_ENDPOINT/${value}`)
@@ -75,6 +79,43 @@ const Registered_user = () => {
       formData.passportNumber &&
       formData.birthday
     );
+  };
+
+  const navigateToLogin = () => {
+    // navigate to /login
+    navigate('/login');
+  };
+
+  const handleRegistration = () => {
+    const userData = {
+      email: formData.email,
+      password: formData.password,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      gender: formData.gender,
+      addressLine1: formData.addressLine1,
+      addressLine2: formData.addressLine2,
+      country: formData.country,
+      city: formData.city,
+      // birthday: formData.birthday,
+      birthday: "2005-11-2",
+      passportNumber: formData.passportNumber,
+    };
+
+    // Send a POST request to your Flask backend
+    axios.post('http://127.0.0.1:5000/signup/', userData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        navigateToLogin();
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Handle errors from the backend (e.g., display an error message)
+        console.error(error);
+      });
   };
 
   return (
@@ -247,13 +288,13 @@ const Registered_user = () => {
                 name="birhtday"
                 value={formData.birthday}
                 onChange={handleChange}
-                required
+                // required
               />
             </label>
           </div>
 
           
-          <button className="btn-primary"  onClick={handleSubmit}>
+          <button className="btn-primary"  onClick={handleRegistration}>
             Submit
           </button>
         </form>
