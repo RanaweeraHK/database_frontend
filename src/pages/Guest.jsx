@@ -73,6 +73,37 @@ const Guest = () => {
     );
   };
 
+  const handleRegistration = () => {
+    const userData = {
+      email: formData.email,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      gender: formData.gender,
+      addressLine1: formData.addressLine1,
+      addressLine2: formData.addressLine2,
+      country: formData.country,
+      city: formData.city,
+      // birthday: formData.birthday,
+      birthday: "2005-11-2",
+      passportNumber: formData.passportNumber,
+    };
+
+    // Send a POST request to your Flask backend
+    axios.post('http://127.0.0.1:5000/signup/g', userData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        // navigateToLogin();
+        console.log(response.data);
+      })
+      .catch(error => {
+        // Handle errors from the backend (e.g., display an error message)
+        console.error(error);
+      });
+  };
+
   return (
     <div className="background-container-guest">
       <div className="form-container-guest">
@@ -117,7 +148,7 @@ const Guest = () => {
             </label>
           </div>
 
-          <div className="guest-form-row">
+          {/* <div className="guest-form-row">
             <label>
               Password:
               <input
@@ -128,7 +159,7 @@ const Guest = () => {
                 required
               />
             </label>
-          </div>
+          </div> */}
 
           <div className="guest-form-row">
             <label>
@@ -241,12 +272,12 @@ const Guest = () => {
                 name="birhtday"
                 value={formData.birthday}
                 onChange={handleChange}
-                required
+                // required
               />
             </label>
           </div>
 
-          <button type="submit" class ="btn-primary">Submit</button>
+          <button type="submit" class ="btn-primary" onClick={handleRegistration}>Submit</button>
         </form>
       </div>
     </div>

@@ -1,9 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Container, Row, Button } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate} from 'react-router-dom';
 import logowithname from '../../assets/images/logowithname.png';
 import './header.css';
 import { CSSTransition } from 'react-transition-group';
+import axios from 'axios';
+
+
 
 const nav__links = [
   {
@@ -24,10 +27,14 @@ const nav__links = [
   },
 ];
 
+
 const Header = () => {
   const headerref = useRef(null);
   const [isNavVisible, setNavVisibility] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const token = sessionStorage.getItem("token");
+  const navigate = useNavigate();
 
   const stickyHeaderFunc = () => {
     if (window.scrollY > 80) {
@@ -72,6 +79,24 @@ const Header = () => {
     window.scrollTo(0, 0);
   };
 
+  const navigateToHome = () => {
+    // navigate to /Home
+    navigate('/Home');
+  };
+
+  const handleLogout = () => {
+    axios.post('http://127.0.0.1:5000/logout')
+    .then(response => {
+      alert("Successfully Logout");
+      sessionStorage.removeItem("token");
+      navigateToHome();
+    })
+    .catch(error => {
+      // Handle errors from the backend (e.g., display an error message)
+      console.error(error);
+    });
+  };
+    
   return (
     <>
       <header className={`header ${isNavVisible ? 'mobile-menu-open' : ''}`} ref={headerref}>
@@ -110,17 +135,37 @@ const Header = () => {
                   {/* Login and Register Buttons */}
                   {isSmallScreen && isNavVisible && (
                     <div className="nav__btns d-flex align-items-center gap-4">
+                    {!token ? 
+                    <div>
                       <Button className="btn primary__btn">
                         <NavLink to="/login" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
-                          Login
+                         Login
                         </NavLink>
-                      </Button>
+                    </Button>
+
+                    <Button className="btn primary__btn">
+                      <NavLink to="/registered_user" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
+                        Register
+                      </NavLink>
+                    </Button>
+                    </div>
+                    :
+                    <div>
                       <Button className="btn primary__btn">
-                        <NavLink to="/registered_user" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
-                          Register
-                        </NavLink>
+                         <NavLink to="/home" onClick={() => { closeMobileMenu(); scrollToTop(); handleLogout(); }} >
+                         Logout
+                         </NavLink>
+                      </Button>
+
+                      <Button className="btn primary__btn">
+                      <NavLink to="/profile" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
+                        profile
+                      </NavLink>
                       </Button>
                     </div>
+                    }
+                    
+                  </div>
                   )}
                 </div>
               </CSSTransition>
@@ -133,16 +178,36 @@ const Header = () => {
                 {/* Right-side buttons for non-mobile view */}
                 {!isSmallScreen && (
                   <div className="nav__btns d-flex align-items-center gap-4">
-                    <Button className="btn primary__btn">
-                      <NavLink to="/login" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
-                        Login
-                      </NavLink>
+                    {!token ? 
+                    <div>
+                      <Button className="btn primary__btn" >
+                        <NavLink to="/login" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
+                         Login
+                        </NavLink>
                     </Button>
+
                     <Button className="btn primary__btn">
                       <NavLink to="/registered_user" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
                         Register
                       </NavLink>
                     </Button>
+                    </div>
+                    :
+                    <div>
+                      <Button className="btn primary__btn">
+                         <NavLink to="/home" onClick={() => { closeMobileMenu(); scrollToTop(); handleLogout(); }} >
+                         Logout
+                         </NavLink>
+                      </Button>
+
+                      <Button className="btn primary__btn">
+                      <NavLink to="/profile" onClick={() => { closeMobileMenu(); scrollToTop(); }}>
+                        profile
+                      </NavLink>
+                      </Button>
+                    </div>
+                    }
+                    
                   </div>
                 )}
               </div>

@@ -162,6 +162,8 @@
   border-radius: 10px;
   cursor: pointer;
   transition: 70ms;
+  
+
 }
 
 .Nav button:active {

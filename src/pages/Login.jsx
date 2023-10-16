@@ -3,6 +3,7 @@ import '../styles/login.css'
 import{Container,Row,Col,Form,FormGroup,Button} from 'reactstrap'
 import {Link, useNavigate} from 'react-router-dom'
 import loginImg from '../assets/images/plane-login.webp'
+import axios from 'axios';
 // import {FcGoogle} from 'react-icons/fc'
 // import {app} from '../config/firebase-config'
 // import { getAuth, GoogleAuthProvider, signInWithPopup} from 'firebase/auth'
@@ -19,9 +20,11 @@ const Login = ({setAuth}) =>
 
   
   const [credentials, setCredentials] = useState({
-    email:undefined,
-    password:undefined
+    email:'',
+    password:''
   });
+
+  const token = sessionStorage.getItem("token");
 
   const handleChange = e =>{
     setCredentials(prev => ({ ...prev, [e.target.name]: e.target.value}))
@@ -31,6 +34,45 @@ const Login = ({setAuth}) =>
   const handleClick = e => {
     e.preventDefault();
   }
+
+  const navigateToHome = () => {
+    // navigate to /Home
+    navigate('/Home');
+  };
+
+  const handleLogin = () => {
+    // const history = useHistory();
+    const userData = {
+      // userName: credentials.userName,
+      email: credentials.email,
+      password: credentials.password,
+      token:token
+    };
+    // console.log(userData);
+    // Send a POST request to your Flask backend
+    axios.post('http://127.0.0.1:5000/login', userData, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(response => {
+        // Handle the response from the backend (e.g., show a success message)
+        if(response.data && response.data.access_token){
+          alert("Successfully Login");
+          sessionStorage.setItem("token", response.data.access_token);
+          navigateToHome();
+          // return (<MessageComponent content="Please read the comments carefully"></MessageComponent>);
+        } else{
+          console.error('Invalid response from server:', response.data);
+        }
+        
+      })
+      .catch(error => {
+        // Handle errors from the backend (e.g., display an error message)
+        console.error(error);
+      });
+  };
+
 
   return (
     <section>
@@ -53,7 +95,7 @@ const Login = ({setAuth}) =>
                     <input type="password" placeholder="Password" required id="box-log" name = "password" onChange={handleChange}/>
                   </FormGroup>
                   
-                  <Button className="btn_secondary1"  onClick={handleClick}>
+                  <Button className="btn_secondary1"  onClick={handleLogin}>
                     Login
                   </Button>
                   {/* <Button className='btn google__btn auth__btn ' type="submit" onClick={loginWithGoogle}>
