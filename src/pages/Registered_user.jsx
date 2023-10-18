@@ -285,11 +285,15 @@ const Registered_user = () => {
               Birthday
               <input
                 type="date"
+                id="birhtday"
                 name="birhtday"
+                className="form-control"
                 value={formData.birthday}
                 onChange={handleChange}
-                // required
+                required
               />
+             
+
             </label>
           </div>
 

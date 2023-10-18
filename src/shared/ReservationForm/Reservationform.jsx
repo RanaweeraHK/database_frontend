@@ -1,15 +1,48 @@
-import React from 'react';
+import React ,{useState}from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Container, Row, Col } from 'reactstrap';
 import './ReservationForm.css';
-
+import axios from 'axios';
 
 const ReservationForm = () => {
   const navigate = useNavigate(); 
 
+  const [trip, setTrip] = useState({
+    departureLocation: '',
+    departureDate: '',
+    arrivalLocation: '',
+  });
+
+  const handleChange = e => { setTrip(prev => ({ ...prev, [e.target.name]: e.target.value}))}
+
   const handleCheckButtonClick = () => {
     navigate('/availability');
     window.scrollTo(0, 0); 
+  };
+
+  const handleFlight = () => {
+    const tripData = {
+      departureLocation: trip.departureLocation,
+      departureDate: trip.departureDate,
+      arrivalLocation: trip.arrivalLocation,
+    };
+
+    axios.post('http://127.0.0.1:5000/getflight', tripData,{
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => {
+      console.log(response.data);
+      if(response.data){
+        sessionStorage.setItem("flight_schedule_id",JSON.stringify(response.data.flight_schedule_id));
+        // handleCheckButtonClick();
+      }
+    })
+    .catch(error => {
+      // Handle errors from the backend (e.g., display an error message)
+      console.error(error);
+    });
   };
   
   return (
@@ -21,20 +54,25 @@ const ReservationForm = () => {
                   <h3>Departure</h3>
                   <div className="form-group">
                     <label htmlFor="departure-location">Location:</label>
-                    <select id="departure-location" name="departure-location" className="form-control">
-                      <option value="New York, USA">New York, USA</option>
-                      <option value="London, UK">London, UK</option>
+                    <select id="departure-location" name="departureLocation" className="form-control" onChange={handleChange}>
+                      <option value="DEL">India, new Delhi</option>
+                      <option value="BOM">India, Mumbai</option>
+                      <option value="MAA">India, Chennai</option>
+                      <option value="CGK">Indonesia, Jakarta</option>
+                      <option value="DPS">Indonesia, Bali</option>
+                      <option value="SIN">Singapore, Changi</option>
+                      <option value="BIA">Sri Lanka, Colombo</option>
+                      <option value="HRI">Sri Lanka, Hambanthota</option>
+                      <option value="BKK">Thailand, Bangkok, BKK</option>
+                      <option value="DMK">Thailand, Bangkok, DMK</option>
                       {/* Add more options as needed */}
                     </select>
                   </div>
                   <div className="form-group">
                     <label htmlFor="departure-date">Date:</label>
-                    <input type="date" id="departure-date" name="departure-date" className="form-control" />
+                    <input type="date" id="departure-date" name="departureDate" className="form-control" onChange={handleChange}/>
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="departure-time">Time:</label>
-                    <input type="time" id="departure-time" name="departure-time" className="form-control" />
-                  </div>
+                  
                 </form>
             </Row>
 
@@ -44,27 +82,28 @@ const ReservationForm = () => {
                   <h3>Arrival</h3>
                   <div className="form-group">
                     <label htmlFor="arrival-location">Location:</label>
-                    <select id="arrival-location" name="arrival-location" className="form-control">
-                      <option value="Los Angeles, USA">Los Angeles, USA</option>
-                      <option value="Beijing, China">Beijing, China</option>
+                    <select id="arrival-location" name="arrivalLocation" className="form-control" onChange={handleChange}>
+                      <option value="DEL">India, new Delhi</option>
+                      <option value="BOM">India, Mumbai</option>
+                      <option value="MAA">India, Chennai</option>
+                      <option value="CGK">Indonesia, Jakarta</option>
+                      <option value="DPS">Indonesia, Bali</option>
+                      <option value="SIN">Singapore, Changi</option>
+                      <option value="BIA">Sri Lanka, Colombo</option>
+                      <option value="HRI">Sri Lanka, Hambanthota</option>
+                      <option value="BKK">Thailand, Bangkok, BKK</option>
+                      <option value="DMK">Thailand, Bangkok, DMK</option>
                       {/* Add more options as needed */}
                     </select>
                   </div>
-                  <div className="form-group">
-                    <label htmlFor="arrival-date">Date:</label>
-                    <input type="date" id="arrival-date" name="arrival-date" className="form-control" />
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="arrival-time">Time:</label>
-                    <input type="time" id="arrival-time" name="arrival-time" className="form-control" />
-                  </div>
+                  
                 </form>
             </Row>
 
             {/* Check Button */}
             <Row>
             <Col lg="12" className="text-right">
-            <button className="btn-primary" onClick={handleCheckButtonClick}>
+            <button className="btn-primary" onClick={handleFlight}>
                 Check
               </button>
             </Col>
