@@ -281,20 +281,13 @@ const Registered_user = () => {
           </div>
 
           <div className="guest-form-row">
-            <label>
-              Birthday
-              <input
-                type="date"
-                id="birhtday"
-                name="birhtday"
-                className="form-control"
-                value={formData.birthday}
-                onChange={handleChange}
-                required
-              />
-             
-
-            </label>
+          <label htmlFor="birhtday">Date:</label>
+                  <input 
+                    type="date" 
+                    id="birhtday" 
+                    name="birthday" 
+                    className="form-control" 
+                    onChange={handleChange}/>
           </div>
 
           
