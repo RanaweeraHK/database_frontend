@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import '../styles/user_profile.css';
-import userImage from '../assets/images/profile5.jpg'; // Import the user image
+import userImage from '../assets/images/profile5.jpg'; 
 
 const User_profile = () => {
     const navigate = useNavigate();
