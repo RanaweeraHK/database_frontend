@@ -17,6 +17,7 @@ import Registered_user from '../pages/Registered_user';
 import Thankyou from '../pages/Thankyou';
 import Profile from '../pages/Profile';
 import Pay from '../pages/Pay';
+import User_profile from '../pages/User_profile';
 
 
 
@@ -43,6 +44,7 @@ const Routers = () => {
     <Route path='/registered_user' element={<Registered_user/>} />
     <Route path='/thank-you' element={<Thankyou/>}/>
     <Route path='/pay' element={<Pay/>}/>
+    <Route path='/user_profile' element={<User_profile/>}/>
    </Routes>
   )
 }
