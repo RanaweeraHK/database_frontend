@@ -66,25 +66,25 @@ function About() {
           image={profile1}
         />
         <ProfileCard
-          name="Developer 2"
+          name="Subendiran Pranavan"
           role="Front-end Developer"
           image={profile2}
         />
         <ProfileCard
-          name="Developer 3"
-          role="Database Manager"
+          name="Anupa Perera"
+          role="Back-end Developer"
           image={profile3}
         />
         <ProfileCard
-          name="Developer 4"
-          role="Back-end Developer"
+          name="Lasana Subasinghe"
+          role="Data base manager"
           image={profile4}
         />
-        <ProfileCard
+        {/* <ProfileCard
           name="Developer 5"
           role="Back-end Developer"
           image={profile5}
-        />
+        /> */}
       </section>
     </main>
   );
