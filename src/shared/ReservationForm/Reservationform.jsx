@@ -20,30 +20,30 @@ const ReservationForm = () => {
     window.scrollTo(0, 0); 
   };
 
-  const handleFlight = () => {
-    const tripData = {
-      departureLocation: trip.departureLocation,
-      departureDate: trip.departureDate,
-      arrivalLocation: trip.arrivalLocation,
-    };
+  // const handleFlight = () => {
+  //   const tripData = {
+  //     departureLocation: trip.departureLocation,
+  //     departureDate: trip.departureDate,
+  //     arrivalLocation: trip.arrivalLocation,
+  //   };
 
-    axios.post('http://127.0.0.1:5000/getflight', tripData,{
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(response => {
-      console.log(response.data);
-      if(response.data){
-        sessionStorage.setItem("flight_schedule_id",JSON.stringify(response.data.flight_schedule_id));
-        // handleCheckButtonClick();
-      }
-    })
-    .catch(error => {
-      // Handle errors from the backend (e.g., display an error message)
-      console.error(error);
-    });
-  };
+  //   axios.post('http://127.0.0.1:5000/getflight', tripData,{
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //   })
+  //   .then(response => {
+  //     console.log(response.data);
+  //     if(response.data){
+  //       sessionStorage.setItem("flight_schedule_id",JSON.stringify(response.data.flight_schedule_id));
+  //       // handleCheckButtonClick();
+  //     }
+  //   })
+  //   .catch(error => {
+  //     // Handle errors from the backend (e.g., display an error message)
+  //     console.error(error);
+  //   });
+  // };
   
   return (
     <div className="reservation-form-container">
@@ -104,9 +104,9 @@ const ReservationForm = () => {
             <Row>
             <Col lg="12" className="text-right">
             {/* <Link to="/availability"> */}
-              <button className="btn-primary" onClick={() => {handleFlight;handleCheckButtonClick}}>
+            <button className="btn-primary" onClick={handleCheckButtonClick}>
                 Check
-              </button>
+            </button>
             {/* </Link> */}
             </Col>
             </Row>
